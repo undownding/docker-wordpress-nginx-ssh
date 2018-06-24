@@ -20,6 +20,7 @@ RUN apt-get -y install php5-curl php5-gd php5-intl php-pear php5-imagick php5-im
 
 # mysql config
 RUN sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
+RUN sed -ri "s/key_buffer\s/key_buffer_size /" /etc/mysql/my.cnf 
 
 # nginx config
 RUN sed -i -e"s/keepalive_timeout\s*65/keepalive_timeout 2/" /etc/nginx/nginx.conf
